@@ -1,3 +1,46 @@
 git init
 git add .
 git commit -m "Initial commit"
+git remote add origin https://github.com/ton-utilisateur/ton-repo.git
+git branch -M main
+git push -u origin main
+
+import { useState, useRef, useCallback } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Select, SelectContent, SelectTrigger, SelectItem } from "@/components/ui/select";
+import { Search, Loader2, PlusCircle, Download, Settings, BarChart2, Users, CreditCard, Mail, Database, Filter, LogIn, Sun, Moon, Shield, UsersRound, PieChart as LucidePieChart } from "lucide-react";
+import * as FileSaver from "file-saver";
+import { motion } from "framer-motion";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+
+export default function LeadFinder() {
+  const [keywords, setKeywords] = useState("");
+  const leadsRef = useRef([]);
+  const [customFields, setCustomFields] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [role, setRole] = useState("admin");
+  const [darkMode, setDarkMode] = useState(false);
+  const companyName = "LeadMaster Pro";
+  const [campaigns, setCampaigns] = useState([]);
+  const [filters, setFilters] = useState({ sector: "", location: "", companySize: "", revenue: "", position: "" });
+  const [userAccess, setUserAccess] = useState("admin");
+
+  const handleLogin = () => {
+    alert("Connexion sécurisée à Gmail et LinkedIn en cours...");
+  };
+
+  return (
+    <motion.div className={`flex h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white"}`}>
+      {/* Sidebar */}
+      <div className={`w-72 bg-white shadow-xl p-6 text-gray-900 ${darkMode ? "bg-gray-800 text-white" : "bg-white"}`}>
+        <h2 className="text-3xl font-bold mb-6">{companyName}</h2>
+        <Button onClick={handleLogin} className="mt-4 bg-blue-500 text-white">Connexion Gmail / LinkedIn</Button>
+      </div>
+    </motion.div>
+  );
+}
